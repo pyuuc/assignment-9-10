@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> Sudoku </title>
+		{% load django_bootstrap5 %}
+		{% bootstrap_css %}
+    	{% bootstrap_javascript %}
+	</head>
+
+	<body>
+		<h1>Sudoku Game</h1>
+		<form method="post">
+			{% csrf_token %}
+		 	<table class="table table-info table-striped w-75">
+		 		{% for row in data %}
+				<tr>
+					{% for item in row %}
+					{% if item != "None" %}
+						<td class="col-md-1">
+							<label class="text-primary">{{item}}</label>
+						</td>
+					{% else %}
+						<td class="col-md-1">
+							<input type="text" name="abc" value="Fill" class="bg-light text-danger w-50">
+						</td>
+					{% endif %}
+					{% endfor %}
+				</tr>
+				{% endfor %}
+		 	</table>
+		 	<input type="submit">
+		</form>
+		
+	</body>
+</html>
